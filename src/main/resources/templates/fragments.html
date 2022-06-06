@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!-- fragment helps avoid boiler plate code -->
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Title</title>
+
+    <!-- creating static resources -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+
+</head>
+<body>
+    <nav th:fragment="navbar">
+        <a href="/cheese/">Home</a>
+        <a href="/cheese/add">Add a cheese</a>
+    </nav>
+</body>
+</html>

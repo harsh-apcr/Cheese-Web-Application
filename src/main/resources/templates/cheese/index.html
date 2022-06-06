@@ -2,11 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <!-- declare a prefix name th with namespace given by thymeleaf URI -->
 <!-- imports thymeleaf html tags -->
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="${title}">Default Title</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
+    <nav th:replace="fragments :: navbar"></nav>
     <h1 th:text="${title}">Default Heading</h1>
     <!-- value within ${key_name} tells thymeleaf to look for value within the `model` with key : key_name-->
 
@@ -19,6 +17,5 @@
         <!-- th:text inserts the value as text -->
     </ul>
 
-    <a href="/cheese/add">Add a cheese</a>
 </body>
 </html>
