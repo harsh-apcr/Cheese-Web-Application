@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+    <nav th:replace="fragments :: navbar"></nav>
+    <h1>Remove Category</h1>
+
+    <form method="post">
+        <div class="form-group" th:each="cat : ${categories}">
+            <input type="checkbox" th:value="${cat.id}" th:id="${cat.id}" name="catIds"/>
+            <label th:for="${cat.id}" th:text="'name : ' + ${cat.name} + ', description : ' + ${cat.description}"></label>
+        </div>
+        <input type="submit" value="Remove Category">
+    </form>
+</body>
+</html>

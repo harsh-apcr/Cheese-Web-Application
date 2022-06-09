@@ -5,9 +5,24 @@
 <body>
     <nav th:replace="fragments :: navbar"></nav>
     <h1>Add a cheese</h1>
-    <form method="post">
-        <label for = "cheese-name">Cheese Name </label>
-        <input type="text" name="cheeseName" id = "cheese-name" />
+    <form method="post" style="max-width: 500px;" th:object="${cheese}">
+        <div class="form-group">
+            <label th:for="name"><b>Cheese Name</b></label>
+            <input class="form-control" th:field="*{name}" />
+            <span th:errors="*{name}" class="field-error"></span>   <!-- display field error message -->
+        </div>
+        <div class="form-group">
+            <label th:for="description"><b>Cheese Description</b></label>
+            <input class="form-control" th:field="*{description}" />    <!-- id="description" name="description" value-->
+            <span th:errors="*{description}" class="field-error"></span>
+        </div>
+        <div class="form-group">
+            <label th:for="cat"><b>Cheese Type</b></label>
+            <select th:field="*{cat}">
+                <option th:each="cat : ${cheeseCats}"
+                th:text="${cat.name}" th:value="${cat.id}"></option>
+            </select>
+        </div>
         <input type="submit" value="Add Cheese" />
     </form>
 </body>

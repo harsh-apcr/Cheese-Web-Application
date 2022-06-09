@@ -3,7 +3,7 @@
 <!-- declare a prefix name th with namespace given by thymeleaf URI -->
 <!-- imports thymeleaf html tags -->
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
     <nav th:replace="fragments :: navbar"></nav>
     <h1 th:text="${title}">Default Heading</h1>
     <!-- value within ${key_name} tells thymeleaf to look for value within the `model` with key : key_name-->
@@ -11,11 +11,21 @@
     <!-- conditionally insert an element -->
     <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
 
-    <ul>
-        <li th:each="cheese : ${cheeses}" th:text="${cheese}"></li>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Type</th>
+        </tr>
+
+        <tr th:each="cheese : ${cheeses}">
+            <td th:text="${cheese.name}"></td>
+            <td th:text="${cheese.description}"></td>
+            <td th:text="${cheese.cat.name}"></td>
+        </tr>
         <!-- th:each ask thymeleaf to repeat the current element for each cheese in cheeses -->
         <!-- th:text inserts the value as text -->
-    </ul>
+    </table>
 
 </body>
 </html>

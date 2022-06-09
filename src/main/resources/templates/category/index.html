@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+    <nav th:replace="fragments :: navbar"></nav>
+    <h1>Cheese Category</h1>
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr th:each="cat : ${categories}">
+            <td th:text="${cat.name}"></td>
+            <td th:text="${cat.description}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
